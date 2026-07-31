@@ -467,6 +467,36 @@
       line-height: 1.75;
     }
 
+    /* Listas centralizadas com os losangos de luz da identidade visual */
+    .light-list li {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .light-list li::before {
+      content: "✦";
+      flex-shrink: 0;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 14px;
+      line-height: 1;
+      text-shadow: 0 0 12px rgba(205, 166, 83, .35);
+    }
+
+    /* Permite quebra somente antes de “28 dias…”, mantendo a expressão unida */
+    .imagine-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: .22em;
+      row-gap: 0;
+    }
+
+    .imagine-title span {
+      white-space: nowrap;
+    }
+
     .check-list li::before { content: "✓"; font-size: 14px; font-weight: 600; }
 
     .truth {
@@ -859,78 +889,7 @@
        HERO — CSS + SVG + imagem Sol.png
   ════════════════════════════════════════════ -->
   <header id="hero" aria-label="Identidade Magnética">
-    <div class="hero-inner">
-
-      <!-- Ramo botânico — inferior esquerdo -->
-      <svg class="hero-branch-bl" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g fill="none" stroke="#9a6e1e" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Haste principal -->
-          <path d="M 28 370 C 60 320 105 255 158 185 C 200 130 238 82 268 38" stroke-width="1.2"/>
-          <!-- Folhas esquerda -->
-          <path d="M 72 308 C 44 288 14 294 2 272 C 28 269 56 280 72 308 Z" stroke-width="1" fill="none"/>
-          <path d="M 72 308 C 50 298 30 286 2 272" stroke-width=".8"/>
-          <path d="M 100 268 C 62 250 28 256 8 232 C 38 228 70 242 100 268 Z" stroke-width="1"/>
-          <path d="M 100 268 C 68 254 40 244 8 232" stroke-width=".8"/>
-          <path d="M 132 222 C 90 205 54 210 32 186 C 64 182 98 198 132 222 Z" stroke-width="1"/>
-          <path d="M 132 222 C 98 208 68 198 32 186" stroke-width=".8"/>
-          <path d="M 164 175 C 120 158 82 163 60 137 C 94 133 128 150 164 175 Z" stroke-width="1"/>
-          <path d="M 164 175 C 128 160 96 150 60 137" stroke-width=".8"/>
-          <!-- Folhas direita -->
-          <path d="M 95 292 C 124 270 154 268 170 244 C 143 246 116 260 95 292 Z" stroke-width="1"/>
-          <path d="M 95 292 C 122 274 146 260 170 244" stroke-width=".8"/>
-          <path d="M 126 248 C 157 224 190 222 208 196 C 178 198 152 214 126 248 Z" stroke-width="1"/>
-          <path d="M 126 248 C 155 230 180 215 208 196" stroke-width=".8"/>
-          <path d="M 158 200 C 192 174 228 170 248 142 C 215 145 188 162 158 200 Z" stroke-width="1"/>
-          <path d="M 158 200 C 190 180 216 162 248 142" stroke-width=".8"/>
-          <path d="M 195 150 C 230 122 268 118 290 88 C 255 92 226 110 195 150 Z" stroke-width="1"/>
-          <path d="M 195 150 C 228 128 256 110 290 88" stroke-width=".8"/>
-          <!-- nervuras -->
-          <line x1="22"  y1="282" x2="38"  y2="292" stroke-width=".5" stroke-opacity=".45"/>
-          <line x1="44"  y1="275" x2="56"  y2="286" stroke-width=".5" stroke-opacity=".45"/>
-          <line x1="55"  y1="265" x2="66"  y2="276" stroke-width=".5" stroke-opacity=".45"/>
-        </g>
-        <!-- pontinhos dourados -->
-        <g fill="#b9852d" fill-opacity=".5">
-          <circle cx="192" cy="318" r="2.4"/>
-          <circle cx="212" cy="338" r="1.6"/>
-          <circle cx="170" cy="335" r="1.9"/>
-          <circle cx="224" cy="312" r="1.3"/>
-          <circle cx="200" cy="298" r="1.1"/>
-          <circle cx="178" cy="350" r="1.4"/>
-        </g>
-      </svg>
-
-      <!-- Ramo botânico — superior direito -->
-      <svg class="hero-branch-tr" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g fill="none" stroke="#9a6e1e" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Haste principal (vai de baixo para cima) -->
-          <path d="M 100 375 C 96 310 92 240 88 165 C 84 108 80 55 76 8" stroke-width="1.1"/>
-          <!-- Folhas esquerda -->
-          <path d="M 88 300 C 60 286 34 290 18 266 C 46 262 74 276 88 300 Z" stroke-width=".95"/>
-          <path d="M 88 300 C 62 286 40 272 18 266" stroke-width=".75"/>
-          <path d="M 87 240 C 58 224 30 228 14 202 C 44 198 72 214 87 240 Z" stroke-width=".95"/>
-          <path d="M 87 240 C 60 226 36 212 14 202" stroke-width=".75"/>
-          <path d="M 86 180 C 56 163 28 167 12 140 C 42 136 70 152 86 180 Z" stroke-width=".95"/>
-          <path d="M 86 180 C 58 165 34 150 12 140" stroke-width=".75"/>
-          <path d="M 84 120 C 54 102 26 106 10 78  C 40 75 68 92 84 120 Z"  stroke-width=".95"/>
-          <path d="M 84 120 C 56 103 30 89 10 78"  stroke-width=".75"/>
-          <!-- Folhas direita -->
-          <path d="M 88 268 C 118 252 146 255 162 230 C 134 230 108 244 88 268 Z" stroke-width=".95"/>
-          <path d="M 88 268 C 116 253 140 238 162 230" stroke-width=".75"/>
-          <path d="M 87 208 C 118 190 148 193 165 166 C 136 167 110 183 87 208 Z" stroke-width=".95"/>
-          <path d="M 87 208 C 116 191 142 176 165 166" stroke-width=".75"/>
-          <path d="M 85 148 C 117 128 148 132 166 104 C 136 105 110 122 85 148 Z" stroke-width=".95"/>
-          <path d="M 85 148 C 115 129 142 114 166 104" stroke-width=".75"/>
-          <path d="M 82 88 C 114 66 146 70 164 42  C 134 44 108 60 82 88 Z"  stroke-width=".95"/>
-          <path d="M 82 88 C 112 68 140 52 164 42"  stroke-width=".75"/>
-        </g>
-        <g fill="#b9852d" fill-opacity=".48">
-          <circle cx="168" cy="200" r="2"/>
-          <circle cx="178" cy="218" r="1.4"/>
-          <circle cx="156" cy="214" r="1.6"/>
-          <circle cx="172" cy="175" r="1.1"/>
-        </g>
-      </svg>
+    <div class="hero-inner">   
 
       <!-- Conteúdo central -->
       <div class="hero-content">
@@ -949,17 +908,7 @@
           </span>
           <span class="hero-title-bottom">Magnética</span>
         </h1>
-
-        <p class="hero-label">Workbook Oficial</p>
-
-        <div class="hero-divider">
-          <div class="hero-divider-line"></div>
-          <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6 0 L7 5 L12 6 L7 7 L6 12 L5 7 L0 6 L5 5 Z" fill="#b9852d" fill-opacity=".85"/>
-          </svg>
-          <div class="hero-divider-line" style="transform:scaleX(-1)"></div>
-        </div>
-
+        <div class="star-divider">✦</div>
         <p class="hero-desc">
           28 dias para despertar a mulher<br>
           que atrai, sustenta e vive<br>
@@ -998,7 +947,7 @@
         <span class="section-kicker">Talvez você sinta que…</span>
         <h2 class="section-title">Talvez você <em>sinta que…</em></h2>
         <div class="star-divider">✦</div>
-        <ul class="clean-list">
+        <ul class="clean-list light-list">
           <li>Está sempre começando e nunca consegue sustentar mudanças.</li>
           <li>Vive cansada.</li>
           <li>Tem dificuldade para manter hábitos.</li>
@@ -1049,8 +998,11 @@
       </div>
 
       <div class="content-block reveal">
-        <h3>Imagine acordar daqui a 28 dias…</h3>
-        <ul class="clean-list spark-list">
+        <h3 class="imagine-title">
+          <span>Imagine acordar daqui a</span>
+          <span>28 dias…</span>
+        </h3>
+        <ul class="clean-list light-list">
           <li>sentindo paz.</li>
           <li>cuidando naturalmente do seu corpo.</li>
           <li>fazendo escolhas alinhadas.</li>
@@ -1074,12 +1026,11 @@
               </svg>
             </span>
             <h3>PURIFICAÇÃO</h3>
-            <p>Limpe corpo, mente e energia.</p>
             <ul>
-              <li>Alimentação</li>
               <li>Detox</li>
-              <li>Hábitos</li>
-              <li>Energia</li>
+              <li>Limpeza energética</li>
+              <li>Organização</li>
+              <li>Desapego</li>
             </ul>
           </article>
 
@@ -1143,7 +1094,7 @@
         <h3>O que você recebe</h3>
         <div class="receives-box">
           <ul class="clean-list check-list">
-            <li>Workbook Premium (48 páginas)</li>
+            <li>Workbook Premium com exercícios diários de autoconhecimento, expansão e evolução.</li>
             <li>28 dias de acompanhamento</li>
             <li>Aulas gravadas</li>
             <li>Exercícios diários</li>
