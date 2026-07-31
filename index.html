@@ -484,6 +484,26 @@
       text-shadow: 0 0 12px rgba(205, 166, 83, .35);
     }
 
+    /* Listas da jornada: mesma largura, início e margem final alinhados */
+    .journey-aligned-list {
+      width: min(660px, 100%);
+      margin-inline: auto;
+    }
+
+    .journey-aligned-list li {
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr);
+      align-items: start;
+      justify-content: initial;
+      width: 100%;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .journey-aligned-list li::before {
+      margin-top: .4em;
+    }
+
     /* Permite quebra somente antes de “28 dias…”, mantendo a expressão unida */
     .imagine-title {
       display: flex;
@@ -947,12 +967,12 @@
         <span class="section-kicker">Talvez você sinta que…</span>
         <h2 class="section-title">Talvez você <em>sinta que…</em></h2>
         <div class="star-divider">✦</div>
-        <ul class="clean-list light-list">
-          <li>Está sempre começando e nunca consegue sustentar mudanças.</li>
+        <ul class="clean-list light-list journey-aligned-list">
           <li>Vive cansada.</li>
           <li>Tem dificuldade para manter hábitos.</li>
-          <li>Sabe o que precisa fazer, mas não consegue permanecer.</li>
           <li>Parece que sua realidade nunca muda.</li>
+          <li>Sabe o que precisa fazer, mas não consegue permanecer.</li>
+          <li>Está sempre começando e nunca consegue sustentar mudanças.</li>
         </ul>
       </div>
 
@@ -1002,13 +1022,13 @@
           <span>Imagine acordar daqui a</span>
           <span>28 dias…</span>
         </h3>
-        <ul class="clean-list light-list">
+        <ul class="clean-list light-list journey-aligned-list">
           <li>sentindo paz.</li>
-          <li>cuidando naturalmente do seu corpo.</li>
-          <li>fazendo escolhas alinhadas.</li>
           <li>confiando em si.</li>
           <li>vibrando abundância.</li>
           <li>vivendo com propósito.</li>
+          <li>fazendo escolhas alinhadas.</li>
+          <li>cuidando naturalmente do seu corpo.</li>
         </ul>
         <p class="lead">Essa mulher já existe.<br>Ela está esperando apenas sua decisão.</p>
       </div>
