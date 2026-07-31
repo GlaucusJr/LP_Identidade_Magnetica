@@ -40,16 +40,169 @@
     a { color: inherit; text-decoration: none; }
     p { margin: 0; }
 
+    /* ─── HERO ─── */
     #hero {
-      line-height: 0;
-      background: var(--ivory);
-    }
-
-    #hero img {
+      position: relative;
       width: 100%;
-      height: auto;
+      background:
+        radial-gradient(ellipse 60% 55% at 7% 5%, rgba(195,170,120,.16) 0%, transparent 55%),
+        radial-gradient(ellipse 35% 45% at 95% 8%, rgba(195,170,120,.09) 0%, transparent 50%),
+        #ede3d3;
+      overflow: hidden;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    /* sombra de folhas canto sup. esq. — efeito luz suave */
+    #hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 38%; height: 55%;
+      background: radial-gradient(ellipse 80% 80% at 15% 15%, rgba(155,130,80,.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      width: 88%;
+      max-width: 1100px;
+      padding: 64px 0 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Conteúdo central */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 2;
+      padding: 20px 40px;
+      gap: 0;
+    }
+
+    /* Imagem do sol */
+    .hero-sun {
+      width: clamp(180px, 26vw, 340px);
+      height: clamp(180px, 26vw, 340px);
+      object-fit: contain;
+      margin-bottom: clamp(12px, 2vw, 28px);
+      mix-blend-mode: multiply;
+    }
+
+    /* "IDENTIDADE" — menor, espaçado */
+    .hero-title-top {
+      margin: 0;
+      color: #9a6e1e;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(28px, 5vw, 72px);
+      line-height: 1.05;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    /* "MAGNÉTICA" — muito maior */
+    .hero-title-bottom {
+      margin: 0;
+      color: #9a6e1e;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(52px, 10.5vw, 148px);
+      line-height: 1.0;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    /* "WORKBOOK OFICIAL" — entre título e divisor */
+    .hero-label {
+      margin-top: clamp(10px, 1.5vw, 20px);
+      color: #a07830;
+      font-family: var(--sans);
+      font-size: clamp(9px, 1.1vw, 15px);
+      font-weight: 500;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: clamp(10px, 1.5vw, 20px) 0;
+      width: clamp(200px, 40%, 480px);
+    }
+
+    .hero-divider-line {
+      flex: 1;
+      height: 1px;
+      background: #b9852d;
+      opacity: .65;
+    }
+
+    /* Descrição longa */
+    .hero-desc {
+      color: #9a6e1e;
+      font-family: var(--sans);
+      font-size: clamp(8px, 1vw, 13px);
+      font-weight: 400;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      line-height: 1.9;
+      margin-top: clamp(4px, 0.8vw, 10px);
+    }
+
+    /* "CORPO • MENTE • ENERGIA • CONSCIÊNCIA" */
+    .hero-tags {
+      margin-top: clamp(14px, 2.2vw, 32px);
+      color: #a07830;
+      font-family: var(--sans);
+      font-size: clamp(7px, .85vw, 11px);
+      font-weight: 400;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-tags-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #b9852d;
+      opacity: .8;
+      flex-shrink: 0;
+    }
+
+    /* ─── Ramos ─── */
+    .hero-branch-bl,
+    .hero-branch-tr {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .hero-branch-bl {
+      left: -2%;
+      bottom: -2%;
+      width: clamp(140px, 22%, 280px);
+      opacity: .78;
+    }
+
+    .hero-branch-tr {
+      right: -1%;
+      top: -2%;
+      width: clamp(90px, 14%, 180px);
+      opacity: .72;
+    }
+
+    /* ─── resto das seções ─── */
     .page-section {
       position: relative;
       overflow: hidden;
@@ -57,7 +210,6 @@
       isolation: isolate;
     }
 
-    /* Fundos do corpo construídos somente com as cores da paleta. */
     .page-section::before {
       content: "";
       position: absolute;
@@ -67,12 +219,10 @@
         radial-gradient(circle at 14% 12%, rgba(196,148,58,.07), transparent 28%),
         radial-gradient(circle at 88% 82%, rgba(139,107,42,.05), transparent 30%),
         linear-gradient(145deg, #faf5ed 0%, #f4eadb 52%, #f8f1e7 100%);
-      opacity: 1;
       pointer-events: none;
     }
 
     .page-section:nth-of-type(even)::before {
-      transform: none;
       background:
         radial-gradient(circle at 86% 14%, rgba(196,148,58,.06), transparent 29%),
         radial-gradient(circle at 12% 86%, rgba(139,107,42,.05), transparent 28%),
@@ -125,10 +275,7 @@
       text-align: center;
     }
 
-    .section-title em {
-      color: var(--gold);
-      font-weight: 400;
-    }
+    .section-title em { color: var(--gold); font-weight: 400; }
 
     .lead {
       max-width: 790px;
@@ -158,14 +305,9 @@
       background: linear-gradient(90deg, transparent, var(--gold));
     }
 
-    .star-divider::after {
-      background: linear-gradient(90deg, var(--gold), transparent);
-    }
+    .star-divider::after { background: linear-gradient(90deg, var(--gold), transparent); }
 
-    .content-block {
-      margin-top: 72px;
-    }
-
+    .content-block { margin-top: 72px; }
     .content-block:first-child { margin-top: 0; }
 
     .content-block h3 {
@@ -216,6 +358,7 @@
       font-size: 14px;
       line-height: 1.75;
     }
+
     .check-list li::before { content: "✓"; font-size: 14px; font-weight: 600; }
 
     .truth {
@@ -234,9 +377,7 @@
       font: 400 31px/1.2 var(--serif);
     }
 
-    .truth p {
-      font: 400 clamp(21px, 3vw, 29px)/1.5 var(--serif);
-    }
+    .truth p { font: 400 clamp(21px, 3vw, 29px)/1.5 var(--serif); }
 
     .portals {
       display: grid;
@@ -260,23 +401,9 @@
       text-transform: uppercase;
     }
 
-    .portal h3 {
-      margin: 18px 0 16px;
-      color: var(--ink);
-      font-size: 34px;
-      letter-spacing: .04em;
-    }
-
-    .portal p,
-    .portal li {
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .portal ul {
-      margin: 15px 0 0;
-      padding-left: 20px;
-    }
+    .portal h3 { margin: 18px 0 16px; color: var(--ink); font-size: 34px; letter-spacing: .04em; }
+    .portal p, .portal li { font-size: 13px; line-height: 1.9; }
+    .portal ul { margin: 15px 0 0; padding-left: 20px; }
 
     .receives-box {
       margin-top: 48px;
@@ -313,15 +440,7 @@
     }
 
     .mentor-copy p + p { margin-top: 21px; }
-
     .mentor-copy .clean-list { margin: 30px 0; }
-
-    .mentor-ending {
-      margin-top: 44px;
-      color: var(--gold);
-      font: italic 400 clamp(25px, 4vw, 37px)/1.5 var(--serif);
-      text-align: center;
-    }
 
     .pricing-grid {
       display: grid;
@@ -354,18 +473,8 @@
       text-transform: uppercase;
     }
 
-    .price-card h3 {
-      min-height: 92px;
-      margin: 18px 0;
-      font-size: clamp(31px, 4vw, 41px);
-      line-height: 1.08;
-    }
-
-    .price-old {
-      margin-top: 16px;
-      font-size: 13px;
-      text-decoration: line-through;
-    }
+    .price-card h3 { min-height: 92px; margin: 18px 0; font-size: clamp(31px, 4vw, 41px); line-height: 1.08; }
+    .price-old { margin-top: 16px; font-size: 13px; text-decoration: line-through; }
 
     .price-current {
       margin: 8px 0 32px;
@@ -373,10 +482,7 @@
       font: 500 clamp(39px, 5vw, 58px)/1 var(--serif);
     }
 
-    .price-card .clean-list {
-      flex: 1;
-      margin-bottom: 34px;
-    }
+    .price-card .clean-list { flex: 1; margin-bottom: 34px; }
 
     .cta {
       display: flex;
@@ -408,16 +514,8 @@
       text-align: center;
     }
 
-    .closing p {
-      color: var(--ink);
-      font: italic 400 clamp(28px, 4.5vw, 48px)/1.45 var(--serif);
-    }
-
-    .closing .closing-star {
-      margin: 28px 0;
-      color: var(--gold);
-      font-style: normal;
-    }
+    .closing p { color: var(--ink); font: italic 400 clamp(28px, 4.5vw, 48px)/1.45 var(--serif); }
+    .closing .closing-star { margin: 28px 0; color: var(--gold); font-style: normal; }
 
     .closing strong {
       display: block;
@@ -428,11 +526,7 @@
       text-transform: uppercase;
     }
 
-    .closing-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+    .closing-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
     footer {
       padding: 40px 24px;
@@ -450,27 +544,24 @@
       transition: opacity .9s ease, transform .9s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 800px) {
       .page-section { padding: 88px 20px; }
-      .page-section::before { inset: 0; }
       .portals, .pricing-grid { grid-template-columns: 1fr; }
       .price-card { min-height: 0; }
       .price-card h3, .price-tag { min-height: 0; }
       .closing-actions { grid-template-columns: 1fr; }
+      .hero-inner { width: 92%; }
     }
 
     @media (max-width: 520px) {
       .page-section { padding: 72px 18px; }
-      .page-section::before { inset: 0; opacity: 1; }
       .truth, .portal, .receives-box, .price-card { padding: 32px 24px; }
       .portal { min-height: 0; }
       .mentor-copy { font-size: 13px; }
       .clean-list li { font-size: 13px; }
+      .hero-content { padding: 16px 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -481,14 +572,131 @@
   </style>
 </head>
 <body>
+
+  <!-- ═══════════════════════════════════════════
+       HERO — CSS + SVG + imagem Sol.PNG
+  ════════════════════════════════════════════ -->
   <header id="hero" aria-label="Identidade Magnética">
-    <img
-      src="hero-identidade-magnetica.png"
-      width="1733"
-      height="909"
-      alt="Identidade Magnética — uma jornada guiada de 28 dias"
-      fetchpriority="high"
-      decoding="async">
+    <div class="hero-inner">
+
+      <!-- Ramo botânico — inferior esquerdo -->
+      <svg class="hero-branch-bl" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="#9a6e1e" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Haste principal -->
+          <path d="M 28 370 C 60 320 105 255 158 185 C 200 130 238 82 268 38" stroke-width="1.2"/>
+          <!-- Folhas esquerda -->
+          <path d="M 72 308 C 44 288 14 294 2 272 C 28 269 56 280 72 308 Z" stroke-width="1" fill="none"/>
+          <path d="M 72 308 C 50 298 30 286 2 272" stroke-width=".8"/>
+          <path d="M 100 268 C 62 250 28 256 8 232 C 38 228 70 242 100 268 Z" stroke-width="1"/>
+          <path d="M 100 268 C 68 254 40 244 8 232" stroke-width=".8"/>
+          <path d="M 132 222 C 90 205 54 210 32 186 C 64 182 98 198 132 222 Z" stroke-width="1"/>
+          <path d="M 132 222 C 98 208 68 198 32 186" stroke-width=".8"/>
+          <path d="M 164 175 C 120 158 82 163 60 137 C 94 133 128 150 164 175 Z" stroke-width="1"/>
+          <path d="M 164 175 C 128 160 96 150 60 137" stroke-width=".8"/>
+          <!-- Folhas direita -->
+          <path d="M 95 292 C 124 270 154 268 170 244 C 143 246 116 260 95 292 Z" stroke-width="1"/>
+          <path d="M 95 292 C 122 274 146 260 170 244" stroke-width=".8"/>
+          <path d="M 126 248 C 157 224 190 222 208 196 C 178 198 152 214 126 248 Z" stroke-width="1"/>
+          <path d="M 126 248 C 155 230 180 215 208 196" stroke-width=".8"/>
+          <path d="M 158 200 C 192 174 228 170 248 142 C 215 145 188 162 158 200 Z" stroke-width="1"/>
+          <path d="M 158 200 C 190 180 216 162 248 142" stroke-width=".8"/>
+          <path d="M 195 150 C 230 122 268 118 290 88 C 255 92 226 110 195 150 Z" stroke-width="1"/>
+          <path d="M 195 150 C 228 128 256 110 290 88" stroke-width=".8"/>
+          <!-- nervuras -->
+          <line x1="22"  y1="282" x2="38"  y2="292" stroke-width=".5" stroke-opacity=".45"/>
+          <line x1="44"  y1="275" x2="56"  y2="286" stroke-width=".5" stroke-opacity=".45"/>
+          <line x1="55"  y1="265" x2="66"  y2="276" stroke-width=".5" stroke-opacity=".45"/>
+        </g>
+        <!-- pontinhos dourados -->
+        <g fill="#b9852d" fill-opacity=".5">
+          <circle cx="192" cy="318" r="2.4"/>
+          <circle cx="212" cy="338" r="1.6"/>
+          <circle cx="170" cy="335" r="1.9"/>
+          <circle cx="224" cy="312" r="1.3"/>
+          <circle cx="200" cy="298" r="1.1"/>
+          <circle cx="178" cy="350" r="1.4"/>
+        </g>
+      </svg>
+
+      <!-- Ramo botânico — superior direito -->
+      <svg class="hero-branch-tr" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="#9a6e1e" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Haste principal (vai de baixo para cima) -->
+          <path d="M 100 375 C 96 310 92 240 88 165 C 84 108 80 55 76 8" stroke-width="1.1"/>
+          <!-- Folhas esquerda -->
+          <path d="M 88 300 C 60 286 34 290 18 266 C 46 262 74 276 88 300 Z" stroke-width=".95"/>
+          <path d="M 88 300 C 62 286 40 272 18 266" stroke-width=".75"/>
+          <path d="M 87 240 C 58 224 30 228 14 202 C 44 198 72 214 87 240 Z" stroke-width=".95"/>
+          <path d="M 87 240 C 60 226 36 212 14 202" stroke-width=".75"/>
+          <path d="M 86 180 C 56 163 28 167 12 140 C 42 136 70 152 86 180 Z" stroke-width=".95"/>
+          <path d="M 86 180 C 58 165 34 150 12 140" stroke-width=".75"/>
+          <path d="M 84 120 C 54 102 26 106 10 78  C 40 75 68 92 84 120 Z"  stroke-width=".95"/>
+          <path d="M 84 120 C 56 103 30 89 10 78"  stroke-width=".75"/>
+          <!-- Folhas direita -->
+          <path d="M 88 268 C 118 252 146 255 162 230 C 134 230 108 244 88 268 Z" stroke-width=".95"/>
+          <path d="M 88 268 C 116 253 140 238 162 230" stroke-width=".75"/>
+          <path d="M 87 208 C 118 190 148 193 165 166 C 136 167 110 183 87 208 Z" stroke-width=".95"/>
+          <path d="M 87 208 C 116 191 142 176 165 166" stroke-width=".75"/>
+          <path d="M 85 148 C 117 128 148 132 166 104 C 136 105 110 122 85 148 Z" stroke-width=".95"/>
+          <path d="M 85 148 C 115 129 142 114 166 104" stroke-width=".75"/>
+          <path d="M 82 88 C 114 66 146 70 164 42  C 134 44 108 60 82 88 Z"  stroke-width=".95"/>
+          <path d="M 82 88 C 112 68 140 52 164 42"  stroke-width=".75"/>
+        </g>
+        <g fill="#b9852d" fill-opacity=".48">
+          <circle cx="168" cy="200" r="2"/>
+          <circle cx="178" cy="218" r="1.4"/>
+          <circle cx="156" cy="214" r="1.6"/>
+          <circle cx="172" cy="175" r="1.1"/>
+        </g>
+      </svg>
+
+      <!-- Conteúdo central -->
+      <div class="hero-content">
+
+        <!-- Sol — imagem PNG com fundo removido via mix-blend-mode -->
+        <img
+          class="hero-sun"
+          src="Sol.PNG"
+          alt=""
+          aria-hidden="true"
+          width="800"
+          height="800"
+        >
+
+        <h1>
+          <span class="hero-title-top">Identidade</span><br>
+          <span class="hero-title-bottom">Magnética</span>
+        </h1>
+
+        <p class="hero-label">Workbook Oficial</p>
+
+        <div class="hero-divider">
+          <div class="hero-divider-line"></div>
+          <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 0 L7 5 L12 6 L7 7 L6 12 L5 7 L0 6 L5 5 Z" fill="#b9852d" fill-opacity=".85"/>
+          </svg>
+          <div class="hero-divider-line" style="transform:scaleX(-1)"></div>
+        </div>
+
+        <p class="hero-desc">
+          28 dias para despertar a mulher<br>
+          que atrai, sustenta e vive<br>
+          a realidade que deseja.
+        </p>
+
+        <div class="hero-tags">
+          <span>Corpo</span>
+          <span class="hero-tags-dot"></span>
+          <span>Mente</span>
+          <span class="hero-tags-dot"></span>
+          <span>Energia</span>
+          <span class="hero-tags-dot"></span>
+          <span>Consciência</span>
+        </div>
+
+      </div><!-- /hero-content -->
+
+    </div><!-- /hero-inner -->
   </header>
 
   <!-- 1ª SEÇÃO -->
@@ -744,9 +952,8 @@
 
   <script>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     if (prefersReducedMotion) {
-      document.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
     } else {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -756,8 +963,7 @@
           }
         });
       }, { threshold: 0.10, rootMargin: "0px 0px -40px" });
-
-      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
     }
   </script>
 </body>
