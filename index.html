@@ -129,6 +129,7 @@
       letter-spacing: .28em;
       text-transform: uppercase;
     }
+
     /* "MAGNÉTICA" — muito maior */
     .hero-title-bottom {
       display: block;
@@ -510,10 +511,31 @@
     .portal ul { margin: 15px 0 0; padding-left: 20px; }
 
     .receives-box {
-      margin-top: 48px;
+      position: relative;
+      width: min(900px, 100%);
+      margin: 48px auto 0;
       padding: 50px;
-      background: rgba(251,247,240,.66);
-      box-shadow: 0 24px 64px rgba(86,59,26,.10);
+      overflow: hidden;
+      border: 1px solid rgba(185, 133, 45, .16);
+      background:
+        radial-gradient(circle at 92% 18%, rgba(205,166,83,.12), transparent 32%),
+        linear-gradient(100deg, rgba(251,247,240,.92), rgba(237,224,204,.52));
+      box-shadow: 0 16px 42px rgba(86,59,26,.075);
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+
+    .receives-box::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+    }
+
+    .receives-box:hover {
+      transform: translateY(-3px);
+      border-color: rgba(185, 133, 45, .34);
+      box-shadow: 0 20px 48px rgba(86,59,26,.11);
     }
 
     .capsules {
@@ -612,25 +634,24 @@
       transform: translateY(-3px);
     }
 
-    .closing {
-      max-width: 760px;
-      margin: 110px auto 0;
+    .investment-intro {
+      max-width: 720px;
+      margin: 0 auto 64px;
       text-align: center;
     }
 
-    .closing p { color: var(--ink); font: italic 400 clamp(28px, 4.5vw, 48px)/1.45 var(--serif); }
-    .closing .closing-star { margin: 28px 0; color: var(--gold); font-style: normal; }
-
-    .closing strong {
-      display: block;
-      margin-bottom: 42px;
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: .30em;
-      text-transform: uppercase;
+    .investment-intro p {
+      color: var(--ink);
+      font: italic 400 clamp(21px, 2.8vw, 32px)/1.55 var(--serif);
     }
 
-    .closing-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .investment-intro p + p {
+      margin-top: 8px;
+    }
+
+    .investment-title {
+      margin-bottom: 0;
+    }
 
     footer {
       padding: 40px 24px;
@@ -655,7 +676,6 @@
       .portals, .pricing-grid { grid-template-columns: 1fr; }
       .price-card { min-height: 0; }
       .price-card h3, .price-tag { min-height: 0; }
-      .closing-actions { grid-template-columns: 1fr; }
       .hero-inner { width: 92%; }
     }
 
@@ -666,6 +686,15 @@
       .mentor-copy { font-size: 13px; }
       .clean-list li { font-size: 13px; }
       .hero-content { padding: 16px 10px; }
+
+      .investment-intro {
+        margin-bottom: 48px;
+      }
+
+      .investment-intro p {
+        font-size: 21px;
+        line-height: 1.5;
+      }
 
       .hero-sun {
         width: clamp(170px, 68%, 250px);
@@ -990,12 +1019,23 @@
         </ul>
       </div>
 
-      <div class="content-block text-flow reveal">
+      <div class="content-block because-section reveal">
         <h3>E se eu não conseguir?</h3>
-        <p>Você não precisa ser perfeita.</p>
-        <p>Você precisa apenas continuar.</p>
-        <div class="truth">
-          <p>Cada pequena escolha fortalece a mulher que você está se tornando.</p>
+
+        <div class="because-cards">
+          <article class="because-card">
+            <p>Você não precisa ser perfeita.</p>
+          </article>
+
+          <article class="because-card">
+            <p>Você precisa apenas continuar.</p>
+          </article>
+
+          <article class="because-card featured">
+            <div class="because-copy">
+              <p>Cada pequena escolha fortalece a mulher que você está se tornando.</p>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -1042,8 +1082,17 @@
   <!-- 5ª SEÇÃO -->
   <section class="page-section" id="investimento">
     <div class="container">
-      <span class="section-kicker reveal">O investimento</span>
-      <h2 class="section-title reveal">Escolha sua <em>experiência</em></h2>
+
+      <span class="section-kicker reveal">Investimento</span>
+
+      <div class="investment-intro reveal">
+        <p>A vida que você deseja…</p>
+        <p>não está esperando que você faça mais.</p>
+        <p>Ela está esperando que você se torne a mulher capaz de sustentá-la.</p>
+      </div>
+
+      <h2 class="section-title investment-title reveal">Escolha sua <em>experiência</em></h2>
+
       <div class="pricing-grid">
         <article class="price-card reveal">
           <div class="price-tag">Método Identidade Magnética</div>
@@ -1079,17 +1128,6 @@
         </article>
       </div>
 
-      <div class="closing reveal">
-        <p>A vida que você deseja…</p>
-        <p>não está esperando que você faça mais.</p>
-        <p>Ela está esperando que você se torne a mulher capaz de sustentá-la.</p>
-        <div class="closing-star" aria-hidden="true">✦</div>
-        <strong>EU SOU IDENTIDADE MAGNÉTICA</strong>
-        <div class="closing-actions">
-          <a class="cta" href="#">QUERO COMEÇAR AGORA</a>
-          <a class="cta" href="#">QUERO ME TORNAR IDENTIDADE MAGNÉTICA</a>
-        </div>
-      </div>
     </div>
   </section>
 
