@@ -87,17 +87,39 @@
       gap: 0;
     }
 
-    /* Imagem do sol */
-    .hero-sun {
-      width: clamp(180px, 26vw, 340px);
-      height: clamp(180px, 26vw, 340px);
-      object-fit: contain;
-      margin-bottom: clamp(12px, 2vw, 28px);
-      mix-blend-mode: multiply;
+    /* Sol alinhado proporcionalmente à palavra IDENTIDADE */
+    .hero-heading {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* "IDENTIDADE" — menor, espaçado */
+    .identity-lockup {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .hero-sun {
+      width: clamp(190px, 65%, 390px);
+      max-width: 390px;
+      height: auto;
+      margin: 0 auto 8px;
+      object-fit: contain;
+      object-position: center bottom;
+      transform: translateY(8px);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+/* "IDENTIDADE" — menor, espaçado */
     .hero-title-top {
+      display: block;
       margin: 0;
       color: #9a6e1e;
       font-family: var(--serif);
@@ -110,6 +132,7 @@
 
     /* "MAGNÉTICA" — muito maior */
     .hero-title-bottom {
+      display: block;
       margin: 0;
       color: #9a6e1e;
       font-family: var(--serif);
@@ -327,6 +350,88 @@
     }
 
     .text-flow p + p { margin-top: 20px; }
+
+    /* ─── Bloco “Porque…” ─── */
+    .because-section {
+      width: min(900px, 100%);
+      margin-inline: auto;
+    }
+
+    .because-section > h3 {
+      margin-bottom: 34px;
+    }
+
+    .because-cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    .because-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 92px;
+      padding: 22px 32px;
+      overflow: hidden;
+      border: 1px solid rgba(185, 133, 45, .16);
+      background:
+        linear-gradient(100deg, rgba(251,247,240,.92), rgba(237,224,204,.52));
+      box-shadow: 0 16px 42px rgba(86,59,26,.075);
+      text-align: center;
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+
+    .because-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+    }
+
+    .because-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(185, 133, 45, .34);
+      box-shadow: 0 20px 48px rgba(86,59,26,.11);
+    }
+
+.because-card p {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(21px, 2.4vw, 28px);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .because-card.featured {
+      min-height: 132px;
+      background:
+        radial-gradient(circle at 92% 18%, rgba(205,166,83,.17), transparent 30%),
+        linear-gradient(110deg, rgba(248,238,219,.96), rgba(231,211,171,.62));
+    }
+
+    .because-card.featured .because-copy {
+      display: grid;
+      width: 100%;
+      gap: 8px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .because-card.featured strong {
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    .because-card:last-child p {
+      color: var(--gold);
+      font-weight: 500;
+    }
 
     .clean-list {
       width: min(760px, 100%);
@@ -561,7 +666,22 @@
       .portal { min-height: 0; }
       .mentor-copy { font-size: 13px; }
       .clean-list li { font-size: 13px; }
-      .hero-content { padding: 16px 24px; }
+      .hero-content { padding: 16px 10px; }
+
+      .hero-sun {
+        width: clamp(170px, 68%, 250px);
+        max-width: 250px;
+        margin-bottom: 6px;
+        transform: translateY(6px);
+      }
+
+      .because-card {
+        min-height: 80px;
+        padding: 18px 20px;
+      }
+
+      .because-card p { font-size: 20px; }
+      .because-card.featured { min-height: 120px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -574,7 +694,7 @@
 <body>
 
   <!-- ═══════════════════════════════════════════
-       HERO — CSS + SVG + imagem Sol.PNG
+       HERO — CSS + SVG + imagem Sol.png
   ════════════════════════════════════════════ -->
   <header id="hero" aria-label="Identidade Magnética">
     <div class="hero-inner">
@@ -653,18 +773,18 @@
       <!-- Conteúdo central -->
       <div class="hero-content">
 
-        <!-- Sol — imagem PNG com fundo removido via mix-blend-mode -->
-        <img
-          class="hero-sun"
-          src="Sol.PNG"
-          alt=""
-          aria-hidden="true"
-          width="800"
-          height="800"
-        >
-
-        <h1>
-          <span class="hero-title-top">Identidade</span><br>
+        <h1 class="hero-heading">
+          <span class="identity-lockup">
+            <img
+              class="hero-sun"
+              src="Sol.png"
+              alt=""
+              aria-hidden="true"
+              width="917"
+              height="953"
+            >
+            <span class="hero-title-top">Identidade</span>
+          </span>
           <span class="hero-title-bottom">Magnética</span>
         </h1>
 
@@ -725,19 +845,45 @@
         </ul>
       </div>
 
-      <div class="content-block text-flow reveal">
+      <div class="content-block because-section reveal">
         <h3>Porque…</h3>
-        <p>Você continua tentando mudar sua vida…</p>
-        <p>sem mudar sua identidade.</p>
-        <div class="truth">
-          <strong>A verdade é simples:</strong>
-          <p>Sua realidade sempre será um reflexo da frequência que você sustenta.</p>
+
+        <div class="because-cards">
+          <article class="because-card">
+            <p>Você continua tentando mudar sua vida…</p>
+          </article>
+
+          <article class="because-card">
+            <p>sem mudar sua identidade.</p>
+          </article>
+
+          <article class="because-card featured">
+            <div class="because-copy">
+              <strong>A verdade é simples:</strong>
+              <p>Sua realidade sempre será um reflexo da frequência que você sustenta.</p>
+            </div>
+          </article>
+
+          <article class="because-card">
+            <p>Você pode repetir afirmações…</p>
+          </article>
+
+          <article class="because-card">
+            <p>visualizar…</p>
+          </article>
+
+          <article class="because-card">
+            <p>meditar…</p>
+          </article>
+
+          <article class="because-card">
+            <p>mas enquanto continuar sendo a mesma pessoa…</p>
+          </article>
+
+          <article class="because-card">
+            <p>continuará vivendo a mesma realidade.</p>
+          </article>
         </div>
-        <p>Você pode repetir afirmações…</p>
-        <p>visualizar…</p>
-        <p>meditar…</p>
-        <p>mas enquanto continuar sendo a mesma pessoa…</p>
-        <p>continuará vivendo a mesma realidade.</p>
       </div>
 
       <div class="content-block reveal">
